@@ -18,7 +18,7 @@ RUN apt-get clean && apt-get update && apt-get install -y locales \
     && cat /etc/locale.gen \
     && locale-gen
 
-COPY ./docker/docker-entrypoint.sh /docker-entrypoint.sh
+COPY docker/docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
 
 RUN apt-get update && \
@@ -27,7 +27,7 @@ RUN apt-get update && \
     pip install --trusted-host pypi.python.org gunicorn
 
 # Copy requirements.txt before rest of repo for caching
-COPY ./requirements.txt .
+COPY requirements.txt .
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
