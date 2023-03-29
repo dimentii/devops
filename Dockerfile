@@ -18,7 +18,7 @@ RUN apt-get clean && apt-get update && apt-get install -y locales \
     && cat /etc/locale.gen \
     && locale-gen
 
-COPY docker/docker-entrypoint.sh /docker-entrypoint.sh
+COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
 
 RUN apt-get update && \
